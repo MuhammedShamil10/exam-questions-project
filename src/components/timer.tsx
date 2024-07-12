@@ -5,15 +5,16 @@ type TimerProp = {
   initialTimer: number;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
   confirmButton: () => void;
+  intervalRef: React.MutableRefObject<NodeJS.Timeout | null>
 };
 
-export const Timer = ({
+export const ExamTimeCountDown = ({
   initialTimer,
   confirmButton,
   setOpenModal,
+  intervalRef
 }: TimerProp) => {
   const [timer, setTimer] = useState<number>(initialTimer);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (timer === 300) {
@@ -38,7 +39,7 @@ export const Timer = ({
         clearInterval(intervalRef.current);
       }
     };
-  }, [timer]);
+  }, [intervalRef, timer]);
 
   useEffect(() => {
     if (timer === 0) {
@@ -46,13 +47,6 @@ export const Timer = ({
     }
   }, [setOpenModal, timer]);
 
-
-  confirmButton = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-  };
-  
   return (
     <span className="absolute top-10 right-10">
       Time left - {`${Math.floor(timer / 60)}`.padStart(2, "0")}:
@@ -61,4 +55,4 @@ export const Timer = ({
   );
 };
 
-export default Timer;
+export default ExamTimeCountDown;

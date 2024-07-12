@@ -4,7 +4,13 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        quicksand: ['Quicksand'],
+          mukta: ['Mukta']
+        
+      }
+    },
   },
   plugins: [],
 }

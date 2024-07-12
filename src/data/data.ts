@@ -1,7 +1,7 @@
 export const data = [
   {
     id: 1,
-    question: "What is the capital of France?",
+    question: "What is the capital of France ?",
     option: {
       a: "Berlin",
       b: "Madrid",
@@ -12,7 +12,7 @@ export const data = [
   },
   {
     id: 2,
-    question: "Which planet is known as the Red Planet?",
+    question: "Which planet is known as the Red Planet ?",
     option: {
       a: "Earth",
       b: "Mars",
@@ -23,7 +23,7 @@ export const data = [
   },
   {
     id: 3,
-    question: "Who wrote 'To Kill a Mockingbird'?",
+    question: "Who wrote 'To Kill a Mockingbird' ?",
     option: {
       a: "Harper Lee",
       b: "Mark Twain",
@@ -34,7 +34,7 @@ export const data = [
   },
   {
     id: 4,
-    question: "What is the boiling point of water?",
+    question: "What is the boiling point of water ?",
     option: {
       a: "90°C",
       b: "100°C",
@@ -45,7 +45,8 @@ export const data = [
   },
   {
     id: 5,
-    question: "Which programming language is known as the language of the web?",
+    question:
+      "Which programming language is known as the language of the web ?",
     option: {
       a: "Python",
       b: "Java",
@@ -56,7 +57,7 @@ export const data = [
   },
   {
     id: 6,
-    question: "What is the largest ocean on Earth?",
+    question: "What is the largest ocean on Earth ?",
     option: {
       a: "Atlantic Ocean",
       b: "Indian Ocean",
@@ -67,7 +68,7 @@ export const data = [
   },
   {
     id: 7,
-    question: "Which company developed the iPhone?",
+    question: "Which company developed the iPhone ?",
     option: {
       a: "Google",
       b: "Samsung",
@@ -78,7 +79,7 @@ export const data = [
   },
   {
     id: 8,
-    question: "What does HTML stand for?",
+    question: "What does HTML stand for ?",
     option: {
       a: "HyperText Markup Language",
       b: "HyperText Markdown Language",
@@ -89,7 +90,7 @@ export const data = [
   },
   {
     id: 9,
-    question: "What is the value of Pi up to two decimal places?",
+    question: "What is the value of Pi up to two decimal places ?",
     option: {
       a: "3.12",
       b: "3.14",
@@ -100,7 +101,7 @@ export const data = [
   },
   {
     id: 10,
-    question: "Who is known as the father of computer science?",
+    question: "Who is known as the father of computer science ?",
     option: {
       a: "Alan Turing",
       b: "Bill Gates",
@@ -111,8 +112,9 @@ export const data = [
   },
   {
     id: 11,
-    question: "Identify this programming language library logo.",
-    image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+    question: "Which programming language use this library",
+    image:
+      "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*y6C4nSvy2Woe0m7bWEn4BA.png",
     option: {
       a: "Python",
       b: "JavaScript",
@@ -124,7 +126,8 @@ export const data = [
   {
     id: 12,
     question: "Name this place.",
-    image: "image_url_here",
+    image:
+      "https://artincontext.org/wp-content/uploads/2022/08/Roman-Colosseum.avif",
     option: {
       a: "Eiffel Tower",
       b: "Statue of Liberty",
@@ -133,5 +136,4 @@ export const data = [
     },
     answer: "Eiffel Tower",
   },
-  
 ];
