@@ -14,8 +14,18 @@ export default function QuestionWithOptions() {
   const [ConfirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
   const question = data[currentQuestionIndex];
-  const [examResult, setExamResult] = useState<any[]>([]);
+  
+  const [examResult, setExamResult] = useState<
+    {
+      question: string;
+      id: number;
+      answer: string;
+      givenAnswer: string;
+      score: number;
+    }[]
+  >([]);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  let count = 0;
 
   useEffect(() => {
     if (data.length > 0) {
@@ -30,20 +40,19 @@ export default function QuestionWithOptions() {
     }
   }, []);
 
-  let filteredMark = examResult.filter(
-    (item) => item.answer === item.givenAnswer
-  );
-  if (filteredMark[currentQuestionIndex]) {
-    examResult.filter((item) => (item.score = 1));
-  }
-
   const handleExamResult = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = e.target;
-    const updatedExamResult = examResult.map((result, index) =>
-      index === currentQuestionIndex
-        ? { ...result, givenAnswer: checked ? id : "" }
-        : result
-    );
+    console.log("id", id);
+    console.log("checked", checked);
+
+    const updatedExamResult = examResult.map((result, index) => {
+      if (index === currentQuestionIndex) {
+        const newGivenAnswer = checked ? id : "";
+        const score = newGivenAnswer === result.answer ? 1 : 0;
+        return { ...result, givenAnswer: newGivenAnswer, score };
+      }
+      return result;
+    });
     setExamResult(updatedExamResult);
   };
 
@@ -71,6 +80,17 @@ export default function QuestionWithOptions() {
     }
   };
 
+  const passOrFail = examResult.filter((option) =>
+    option.score === 1 ? count++ : null
+  );
+
+  if (passOrFail) {
+    count >= 8
+      ? console.log("you pass the test")
+      : console.log("you fail the exam");
+  }
+  const unansweredCount = examResult.filter(item => item.givenAnswer === "").length;
+  const totalQuestions = examResult.length;
   const backButton = () => setConfirmationModalOpen(false);
   return (
     <>
@@ -86,6 +106,7 @@ export default function QuestionWithOptions() {
         setOpenModal={setConfirmationModalOpen}
         label="Confirmation"
         info1="Are you sure you want to submit your exam? Once submitted, you will not be able to make any changes."
+        info2={`Unanswered questions: ${unansweredCount} out of ${totalQuestions}`}
         buttonSubmit={confirmButton}
         buttonCancel={backButton}
         buttonLabel="Confirm"
@@ -107,7 +128,7 @@ export default function QuestionWithOptions() {
           values={currentQuestionIndex === 0 ? -1 : currentQuestionIndex}
         />
         <ExamTimeCountDown
-          initialTimer={400}
+          initialTimer={350}
           intervalRef={intervalRef}
           setOpenModal={setOpenModal}
           confirmButton={confirmButton}

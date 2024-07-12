@@ -50,7 +50,7 @@ export const CountDownModal = ({
           <Typography sx={{ mt: 2 }} className="flex flex-col justify-center">
             {info1}
           </Typography>
-          <Typography sx={{ mt: 2 }} className="flex flex-col justify-center">
+          <Typography sx={{ mt: 2 }} className="flex flex-col justify-center pb-5">
             {info2}
           </Typography>
           {buttonLabel && (
